@@ -1,0 +1,32 @@
+/* スタート・イントロ・クリア画面専用。既存のglobals.cssとは分離 */
+.story-screen {
+  min-height: calc(100vh - 138px);
+  padding: 10px 24px 10px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #f5f1e8;
+  color: #2d2b27;
+}
+
+.story-logo { width: 30vw; height: auto; object-fit: contain; }
+.story-eyebrow { color: #79542f; font-size: 12px; font-weight: 800; letter-spacing: .18em; }
+.story-screen h1 { font-size: clamp(26px, 5vw, 42px); margin: 8px 0 18px; }
+.story-description { color: #655e54; line-height: 1.9; }
+.story-button { margin-top: 28px; min-width: 140px; }
+.intro-text { max-width: 680px; margin: 10px 0; text-align: left; line-height: 2.1; }
+.intro-text p { margin: 0 0 1.25em; }
+.howto-text { max-width: 680px; margin: 10px 0; text-align: left; line-height: 2.1; }
+.howto-text p { margin: 0 0 0.4em; }
+.story-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.story-actions .story-button { margin-top: 0; }
+.story-secondary { padding: 13px 22px; border-radius: 8px; border: 1px solid #b8a88f; background: transparent; color: #64513c; min-height: 47px; }
+.clear-stats { line-height: 1.7; }
+@media (max-width: 700px) {
+  .story-logo { width: 60vw; height: auto; object-fit: contain; }
+  .story-screen { padding: 10px 10px 16px 16px; }
+  .intro-text { font-size: 15px; }
+  .howto-text { font-size: 15px; }
+}

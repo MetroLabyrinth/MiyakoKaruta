@@ -1,0 +1,1503 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .hidden-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge 対応 */
+    scrollbar-width: none; /* Firefox 対応 */
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    /* Chrome, Safari 対応 */
+    display: none;
+  }
+}
+
+/* ========================================
+   01. 基本設定
+======================================== */
+
+:root {
+  font-family:
+    "Yu Gothic",
+    "Hiragino Kaku Gothic ProN",
+    Meiryo,
+    system-ui,
+    sans-serif;
+
+  color: #2d2b27;
+  background: #f5f1e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* サイト全体 */
+.site-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* メインコンテンツ */
+.main-content {
+  flex: 1;
+  width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+
+/* ========================================
+   02. サイト全体
+======================================== */
+
+.shell {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 0 60px;
+}
+
+.main-content {
+  max-width: 1060px;
+  margin: 0px auto;
+  padding: 24px 0;
+
+  width: min(90%, 1200px);
+}
+
+
+/* ========================================
+   03. ヘッダー
+======================================== */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+
+  width: 100%;
+  height: 72px;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+
+  background: #5dad22;
+  color: #ffffff;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* ヘッダーロゴ */
+.header-logo {
+  width: 108px;
+  height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+}
+
+.header-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header-text {
+  min-width: 0;
+}
+
+.header h1 {
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.header .subtitle {
+  margin: 2px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+
+/* ========================================
+   04. スコア表示
+======================================== */
+
+.score {
+  display: grid;
+  gap: 12px;
+
+  padding: 16px 20px;
+  margin-top: 12px;
+
+  background: #eae3d5;
+  border-radius: 12px;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 20px;
+}
+
+.score > div {
+  display: grid;
+  gap: 6px;
+  margin:0 auto;
+}
+
+.score small {
+  font-size: 12px;
+  color: #756b5e;
+  margin: 0 auto;
+}
+
+.score b {
+  font-size: 27px;
+  font-variant-numeric: tabular-nums;
+  margin: 0 auto;
+}
+
+.score b span {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+
+/* ========================================
+   05. 進行状況バー
+======================================== */
+
+.progress {
+  height: 5px;
+  margin-bottom: 20px;
+
+  background: #e1dacb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.progress > div {
+  height: 100%;
+  background: #957043;
+  transition: width 0.3s;
+}
+
+
+/* ========================================
+   06. 共通パネル
+======================================== */
+
+.reading-panel,
+.answer-panel,
+.result,
+.finish {
+  margin-bottom: 28px;
+  padding: 10px 20px;
+
+  background: #fffdf9;
+  border: 1px solid #e8dfd1;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 24px #44331a0a;
+}
+
+.story-panel {
+  max-width: 680px; text-align: center;
+  display:block;
+  margin-bottom: 28px;
+  padding: 10px 20px;
+
+  background: #fffdf9;
+  border: 1px solid #e8dfd1;
+  border-radius: 16px;
+
+  box-shadow: 0 4px 24px #44331a0a;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.number {
+  display: grid;
+  place-items: center;
+
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+
+  border: 1px solid #ceb997;
+  border-radius: 50%;
+
+  color: #946e3d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+/* 読み札パネルの配置 */
+.reading-panel {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 20px;
+}
+
+/* ========================================
+   07. 読み札
+======================================== */
+
+.reading-image {
+  position: relative;
+
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  width: 100%;
+
+  border-width: 2px;
+}
+
+.prompt {
+  margin: 20px 0 2px;
+  text-align: center;
+  color: #6a6257;
+  font-size: 14px;
+}
+
+
+/* ========================================
+   08. 正解画像へのフェード
+======================================== */
+
+.fade-layer {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.fade-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 背面：正解画像 */
+.correct-layer {
+  z-index: 1;
+}
+
+/* 前面：問題画像 */
+.question-layer {
+  z-index: 2;
+  opacity: 1;
+}
+
+/* 正解時：1.5秒かけて透明にする */
+.question-layer.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* 次の問題：瞬時に表示する */
+.question-layer.fade-in {
+  opacity: 1;
+  transition: none;
+}
+
+/* ========================================
+   09. 取り札
+======================================== */
+
+.choice-section {
+  margin-bottom: 28px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card-choice {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: transform 0.2s ease;
+}
+
+.card-choice img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.card-choice:not(:disabled):hover {
+  transform: scale(1.03);
+  border: none;
+  box-shadow: none;
+}
+
+.card-choice:disabled {
+  cursor: default;
+}
+
+.card-choice.selected {
+  border-color: #91622e;
+  box-shadow: 0 0 0 3px #b8986440;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+
+  padding: 12px 2px 6px;
+  font-size: 13px;
+}
+
+.indicator {
+  color: #886134;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+
+/* ========================================
+   10. 画像未設定時の表示
+======================================== */
+
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+
+  color: #877960;
+  text-align: center;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #eee5d5,
+    #eee5d5 12px,
+    #f4ecdc 12px,
+    #f4ecdc 24px
+  );
+}
+
+.image-placeholder small {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+
+/* ========================================
+   11. 共通ボタン
+======================================== */
+
+.primary {
+  min-height: 47px;
+  padding: 13px 22px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: #79542f;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.primary:hover:not(:disabled) {
+  background: #5f4024;
+}
+
+.primary:disabled {
+  opacity: 0.45;
+}
+
+.text-button {
+  margin-top: 15px;
+  padding: 5px 0;
+
+  background: none;
+  border: 0;
+
+  color: #7a5a39;
+  text-decoration: underline;
+}
+
+
+/* ========================================
+   12. 通常の回答パネル
+======================================== */
+
+.answer-panel label {
+  display: block;
+  margin-bottom: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.answer-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.answer-actions input {
+  min-width: 0;
+  flex: 1;
+  padding: 12px 14px;
+
+  border: 1px solid #cfc3b3;
+  border-radius: 8px;
+
+  background: #ffffff;
+  font-size: 16px;
+}
+
+.answer-actions input:focus {
+  outline: 2px solid #a67f4c;
+  outline-offset: 1px;
+}
+
+
+/* ========================================
+   13. 回答モーダルの背景
+======================================== */
+
+.modal-overlay {
+  position: fixed;
+
+  /* ヘッダーの下から表示 */
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  /* ヘッダーより背面 */
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.8);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* ========================================
+   14. 回答モーダル本体
+======================================== */
+
+.answer-modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100dvh - 112px);
+  overflow-y: auto;
+
+  padding: 40px 32px;
+
+  border-radius: 20px;
+
+  background: #1e1b17;
+  color: #ffffff;
+
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+
+  border: none;
+  background: transparent;
+  color: #ffffff;
+
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+.modal-eyebrow {
+  color: #c9aa72;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+.modal-content h2 {
+  margin: 12px 0;
+  font-size: 28px;
+}
+
+.modal-description {
+  color: #b8b0a4;
+  font-size: 14px;
+}
+
+
+/* ========================================
+   15. モーダル内の取り札
+======================================== */
+
+.modal-selected-card {
+  width: 140px;
+  aspect-ratio: 3 / 4;
+  margin: 24px auto;
+
+  overflow: hidden;
+  border-radius: 8px;
+  background: #e8dfcf;
+}
+
+.modal-selected-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+/* ========================================
+   16. モーダル内の回答フォーム
+======================================== */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  width: 100%;
+  text-align: left;
+}
+
+.modal-form label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal-form input {
+  width: 100%;
+  padding: 16px;
+
+  border: 1px solid #766a57;
+  border-radius: 10px;
+
+  background: #302b25;
+  color: #ffffff;
+
+  font-size: 16px;
+  outline: none;
+}
+
+.modal-form input:focus {
+  border-color: #c9aa72;
+}
+
+.modal-submit {
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px;
+}
+
+.modal-back {
+  margin-top: 20px;
+
+  border: none;
+  background: transparent;
+
+  color: #b8b0a4;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+
+/* ========================================
+   17. 正誤判定画面
+======================================== */
+
+.result {
+  text-align: center;
+}
+
+.result h2 {
+  margin: 2px 0;
+  font-size: 18px;
+}
+
+.result p {
+  color: #615a50;
+  font-size: 14px;
+}
+
+/* 不正解 */
+.incorrect {
+  border-color: #b77a6c;
+  background: #fff8f5;
+}
+
+.incorrect h2 {
+  color: #9b4235;
+}
+
+/* 正解 */
+.correct {
+  border-color: #9cb28d;
+  background: #f9fcf6;
+}
+
+.correct h2 {
+  color: #456b36;
+}
+
+
+/* ========================================
+   18. 全問クリア画面
+======================================== */
+
+.finish {
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.clear-stats-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-stats {
+  text-align: center;
+}
+
+/* スコアに重なるハンコ */
+.finish-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+  place-items: center;
+
+  width: 60px;
+  height: 60px;
+  margin: 0;
+
+  border: 2px solid #a58656;
+  border-radius: 50%;
+
+  color: #79542f;
+  font: 32px serif;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(1.2);
+
+  animation: finishStamp 1.2s ease-out 2s forwards;
+}
+
+@keyframes finishStamp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-12deg) scale(1.2);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-12deg) scale(1);
+  }
+}
+
+/* ========================================
+   19. フッター
+======================================== */
+
+
+/* ================================
+   フッター
+================================ */
+
+.site-footer {
+  width: 100%;
+  padding: 10px 20px;
+
+  background: #e9e3d5;
+  border-top: 1px solid #d3c8b6;
+
+  color: #756d60;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1060px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  margin: 0;
+  color: #517e26;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.footer-description {
+  margin: 10px 0 24px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: #d3c8b6;
+}
+
+.footer-copyright {
+  margin: 18px 0 0;
+  font-size: 11px;
+  color: #8c8374;
+}
+
+@media (max-width: 700px) {
+
+  .footer-title {
+    font-size: 16px;
+  }
+
+  .footer-description {
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   20. スマートフォン対応
+======================================== */
+@media (max-width: 960px) {
+  .choice-section {
+    margin-bottom: 28px;
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .number {
+    display: grid;
+    place-items: center;
+
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    border: 1px solid #ceb997;
+    border-radius: 50%;
+
+    color: #946e3d;
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  /* メイン領域 */
+  .main-content {
+    margin:0 0;
+    padding: 10px 10px 0;
+    overscroll-behavior-y: none;
+  }
+
+  /* ヘッダー */
+  .header {
+    height: 72px;
+    padding: 0 12px;
+
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .header-inner {
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 22px;
+  }
+
+  .header .subtitle {
+    font-size: 10px;
+  }
+
+  /* スコア */
+  .score {
+    width: 100%;
+    gap: 12px;
+    padding: 12px 8px;
+  }
+
+  .score b {
+    font-size: 22px;
+  }
+
+  /* 問題パネル */
+  .reading-panel,
+  .answer-panel,
+  .result {
+    padding: 10px 14px;
+  }
+
+  .reading-image {
+    border-width: 2px;
+  }
+
+  /* 取り札は2列 */
+  .card-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* 通常回答欄 */
+  .answer-actions {
+    flex-direction: column;
+  }
+
+  .answer-actions button {
+    width: 100%;
+  }
+
+  /* モーダルをヘッダーの下に配置 */
+  .modal-overlay {
+    top: 64px;
+    padding: 20px;
+  }
+
+  .answer-modal {
+    max-height: calc(100dvh - 104px);
+    padding: 36px 20px 24px;
+  }
+
+  .modal-content h2 {
+    font-size: 24px;
+  }
+
+  .modal-selected-card {
+    width: 110px;
+    margin: 16px auto;
+  }
+}
+
+
+/* ========================================
+   21. アニメーション軽減設定
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .question-layer {
+    transition: none;
+  }
+
+  .card-choice,
+  .progress > div {
+    transition: none;
+  }
+}
+
+
+/* 767px以下でのレイアウト調整 */
+@media (max-width: 767px) {
+  .choice-section {
+    margin-bottom: 28px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .progress {
+    height: 8px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+
+    background: #e1dacb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .main-content {
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+
+  }
+
+  .reading-panel {
+    margin-bottom: 12px;
+  }
+
+  .score {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+  }
+}
+
+/* 回答モーダル内の問題画像 */
+.modal-question-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 24px auto;
+
+  overflow: hidden;
+  border-radius: 8px;
+  background: #e8dfcf;
+}
+
+.modal-question-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .modal-question-image {
+    margin: 16px auto;
+  }
+}
+
+/* ===== ログイン画面 ===== */
+
+.login-page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #f5f1e8;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 30px;
+  background: #fffdf9;
+  border: 1px solid #e8dfd1;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-box h1 {
+  margin: 0 0 12px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.login-box > p {
+  margin-bottom: 28px;
+  text-align: center;
+  color: #78736b;
+  font-size: 14px;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-box label {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cfc3b3;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 16px;
+}
+
+.login-box input:focus {
+  outline: 2px solid #5dad22;
+  outline-offset: 1px;
+}
+
+.login-box button {
+  margin-top: 12px;
+}
+
+.login-error {
+  color: #b42318;
+  font-size: 13px;
+  margin: 0;
+}
+
+
+/* ==============================
+   ヘッダー全体
+============================== */
+
+.miyako-header {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.miyako-header-hidden {
+  transform: translateY(-100%);
+}
+
+/* 既存のheader-innerを拡張 */
+.miyako-header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ロゴ・タイトル */
+.miyako-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==============================
+   ハンバーガーボタン
+============================== */
+
+.miyako-menu-button {
+  position: relative;
+  z-index: 1003;
+
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.miyako-menu-icon {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 30px;
+}
+
+.miyako-menu-line {
+  position: absolute;
+  height: 5px;
+  background: white;
+  border-radius: 999px;
+  transition:
+    transform 0.4s ease,
+    width 0.4s ease,
+    opacity 0.4s ease;
+}
+
+/* 通常状態：4本線 */
+.line-1 {
+  top: 0;
+  left: 0;
+  width: 36px;
+}
+
+.line-2 {
+  top: 12px;
+  left: 0;
+  width: 16px;
+}
+
+.line-3 {
+  top: 12px;
+  right: 0;
+  width: 16px;
+}
+
+.line-4 {
+  bottom: 0;
+  right: 0;
+  width: 36px;
+}
+
+/* 開いた状態：×に変形 */
+.miyako-menu-button.is-open .line-1 {
+  width: 18px;
+  transform: translateY(3px) rotate(45deg);
+}
+
+.miyako-menu-button.is-open .line-2 {
+  width: 18px;
+  transform: translateY(9px) rotate(-45deg);
+}
+
+.miyako-menu-button.is-open .line-3 {
+  width: 18px;
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.miyako-menu-button.is-open .line-4 {
+  width: 18px;
+  transform: translateY(-3px) rotate(45deg);
+}
+
+/* ==============================
+   オーバーレイ
+============================== */
+
+.miyako-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+
+  background: rgba(0, 0, 0, 0.4);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.miyako-menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ==============================
+   ナビゲーション
+============================== */
+
+.miyako-menu-nav {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1002;
+
+  width: min(360px, 90vw);
+  padding: 16px;
+
+  border-radius: 24px;
+  background: #ffffff;
+  color: #333333;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(12px);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.miyako-menu-nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.miyako-menu-nav ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.miyako-menu-nav li a {
+  display: block;
+  padding: 12px 8px;
+
+  border: 2px solid #dddddd;
+  border-radius: 20px;
+
+  color: #333333;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+
+  transition: background 0.2s ease;
+}
+
+.miyako-menu-nav li a:hover {
+  background: #f3f3f3;
+}
+
+/* ==============================
+   スマートフォン
+============================== */
+
+@media (max-width: 480px) {
+  .miyako-header-brand {
+    gap: 8px;
+    flex: 1;
+  }
+
+  .miyako-menu-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .miyako-menu-icon {
+    transform: scale(0.8);
+  }
+
+  .miyako-menu-nav {
+    right: 50%;
+    transform: translate(50%, 12px);
+    width: min(450px, 90vw);
+  }
+
+  .miyako-menu-nav.is-open {
+    transform: translate(50%, 0);
+  }
+}
+
+
+/* ヘッダー内の配置 */
+.miyako-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* ロゴとタイトル */
+.miyako-header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 右側のボタン */
+.miyako-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.miyako-header-button {
+  padding: 10px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.miyako-header-button:hover:not(:disabled) {
+  background: white;
+  color: #427d18;
+}
+
+.miyako-header-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* スマートフォン */
+@media (max-width: 600px) {
+  .miyako-header-inner {
+    gap: 8px;
+  }
+
+  .miyako-header-brand {
+    gap: 6px;
+  }
+
+  .miyako-header-actions {
+    gap: 5px;
+  }
+
+  .miyako-header-button {
+    padding: 7px 8px;
+    font-size: 11px;
+    border-width: 1px;
+    border-radius: 6px;
+  }
+}
+
+.miyako-header-brand {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.miyako-header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+
+/* 問題画像と正解画像の即時切り替え */
+.reading-image.instant-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.instant-image-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.instant-image-layer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* フェードアニメーションを使用しない */
+.instant-image-layer,
+.instant-image-layer img {
+  opacity: 1;
+  transition: none;
+  animation: none;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}

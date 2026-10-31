@@ -1,0 +1,41 @@
+/* app/globals.css の末尾に追記 */
+.header-logo-button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.header-logo-button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header-logo-button:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.header-logo-button:not(:disabled) {
+  cursor: pointer;
+}
+
+.header-logo-button:not(:disabled):focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* 隠し回答フォーム */
+.secret-form {
+  margin-top: 4px;
+}
+.secret-error {
+  margin: 0;
+  color: #ffb6a8;
+  font-size: 13px;
+}
