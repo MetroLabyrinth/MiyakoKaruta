@@ -18,9 +18,7 @@ const handleXPost = () => {
     "#みやこかるた謎 #めとらび",
     "",
     "↓プレイはこちらから↓",
-    "https://ka-mi-p.vercel.app/",
-    "",
-    "https://x.com/sasasabi1/status/2116268253295313362?a=ctFHuAvMiyNZmATuaFo&s=20"
+    "https://x.com/MetroLabyrinth/status/2116412167474008253?s=20"
   ].join("\n");
 
   const url =
